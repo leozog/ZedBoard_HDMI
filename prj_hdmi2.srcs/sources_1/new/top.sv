@@ -38,7 +38,7 @@ module top(
 
     reg [7:0] dev_adr, dev_reg, dev_data_write;
     assign dev_adr = 8'h72;
-    assign dev_reg = 8'hBB;
+    assign dev_reg = 8'h98;
     assign dev_data_write = 8'hCC;
 
     i2c_base i2c_base_inst(

@@ -114,7 +114,7 @@ module tb(
     // i2c_base test
     reg [7:0] dev_adr, dev_reg, dev_data_write;
     assign dev_adr = 8'h72;
-    assign dev_reg = 8'hBB;
+    assign dev_reg = 8'h98;
     assign dev_data_write = 8'hCC;
     wire [7:0] dev_data_read;
     reg start;
@@ -141,6 +141,10 @@ module tb(
     initial begin
         start = 0;
         #10 start = 1;
+        wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK);
+        #20 force i2c_sda = 0;
+        wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK_1);
+        #25 release i2c_sda;
         wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK);
         #20 force i2c_sda = 0;
         wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK_1);

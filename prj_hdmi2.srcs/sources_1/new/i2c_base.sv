@@ -26,7 +26,7 @@ module i2c_base(
     input sclk,
     inout i2c_scl,
     inout i2c_sda,
-    input [7:1] dev_adr,
+    input [7:0] dev_adr,
     input [7:0] dev_reg,
     input [7:0] dev_data_write,
     output [7:0] dev_data_read,
@@ -139,7 +139,7 @@ module i2c_base(
             stream_data_out <= 8'hFF;
         else 
             case(st)
-                SendStart: stream_data_out <= {dev_adr[7:1], frame_st == FrameRead1 ? 1 : 0};
+                SendStart: stream_data_out <= dev_adr & 8'hFE | (frame_st == FrameRead1 ? 8'h01 : 8'h00);
                 ReceiveSlaveAddressAck: stream_data_out <= dev_reg;
                 ReceiveDataAddressAck: stream_data_out <= dev_data_write;
                 default: stream_data_out <= 8'hFF;

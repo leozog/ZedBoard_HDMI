@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 package i2c_bus_state;
-    typedef enum { IDLE, SEND_START, SEND_STOP, SEND_ZERO, SEND_ONE, READ_DATA, READ_DATA_1, RECEIVE_ACK, RECEIVE_ACK_1, SEND_NACK, WAIT, FIN, ERROR} state;
+    typedef enum { IDLE, SEND_START, SEND_START_1, SEND_STOP, SEND_ZERO, SEND_ONE, READ_DATA, READ_DATA_1, RECEIVE_ACK, RECEIVE_ACK_1, SEND_NACK, WAIT, FIN, ERROR} state;
 endpackage
 
 module i2c_bus(
@@ -61,6 +61,8 @@ module i2c_bus(
             i2c_bus_state::IDLE:
                 nst = next_cmd;
             i2c_bus_state::SEND_START:
+                nst = i2c_bus_state::SEND_START_1;
+            i2c_bus_state::SEND_START_1:
                 nst = i2c_bus_state::IDLE;
             i2c_bus_state::SEND_STOP:
                 nst = i2c_bus_state::FIN;
@@ -95,6 +97,8 @@ module i2c_bus(
                 i2c_bus_state::IDLE:
                     force_scl <= 1;
                 i2c_bus_state::SEND_START:
+                    force_scl <= i2c_sda ? 1 : 0;
+                i2c_bus_state::SEND_START_1:
                     force_scl <= 1;
                 i2c_bus_state::SEND_STOP:
                     force_scl <= 0;
@@ -127,6 +131,8 @@ module i2c_bus(
                 i2c_bus_state::IDLE:
                     force_sda <= force_sda;
                 i2c_bus_state::SEND_START:
+                    force_sda <= 1;
+                i2c_bus_state::SEND_START_1:
                     force_sda <= 0;
                 i2c_bus_state::SEND_STOP:
                     force_sda <= 0;
