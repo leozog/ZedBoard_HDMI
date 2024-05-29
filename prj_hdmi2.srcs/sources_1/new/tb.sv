@@ -37,7 +37,6 @@ module tb(
     initial begin
         rst = 1;
         #10 rst = 0;
-        #3000 $finish;
     end
 
     clk_div #(.DIV(4)) clk_div_inst(
@@ -143,12 +142,17 @@ module tb(
         #10 start = 1;
         wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK);
         #20 force i2c_sda = 0;
-        wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK_1);
-        #25 release i2c_sda;
+        wait (i2c_base_inst.i2c_bus_inst.phase == 0);
+        #5 release i2c_sda;
         wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK);
         #20 force i2c_sda = 0;
-        wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK_1);
-        #25 release i2c_sda;
+        wait (i2c_base_inst.i2c_bus_inst.phase == 0);
+        #5 release i2c_sda;
+        wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK);
+        #20 force i2c_sda = 0;
+        wait (i2c_base_inst.i2c_bus_inst.phase == 0);
+        #5 release i2c_sda;
+        #10000 $finish;
     end
 
 endmodule
