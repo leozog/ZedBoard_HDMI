@@ -26,9 +26,10 @@ module i2c_base(
     input sclk,
     inout i2c_scl,
     inout i2c_sda,
-    input [7:0] dev_adr,
+    input [7:1] dev_adr,
     input [7:0] dev_reg,
     input [7:0] dev_data_write,
+    output [7:0] dev_data_read,
     input send,
     input read,
     output idle
@@ -44,18 +45,17 @@ module i2c_base(
         .i2c_sda(i2c_sda),
         .next_cmd(bus_next_cmd),
         .idle(bus_idle),
-        .error(bus_error)
+        .error(bus_error),
         .data_read(bus_data_read)
         );
         
     reg stream_start, stream_send, stream_read;
     wire stream_finish, stream_bit_out;
     reg [7:0] stream_data_out;
-    wire [7:0] stream_data_in;
     bit_stream #(.N(8)) bit_stream_inst(
         .clk(clk),
         .rst(rst),
-        .sclk(sclk),
+        .sclk(bus_idle),
         .setup(stream_start),
         .send(stream_send),    
         .read(stream_read),
@@ -63,7 +63,7 @@ module i2c_base(
         .bit_out(stream_bit_out),
         .bit_in(bus_data_read),
         .data_out(stream_data_out),
-        .data_in(stream_data_in)
+        .data_in(dev_data_read)
         );
 
 
@@ -82,17 +82,16 @@ module i2c_base(
     } state;
 
     typedef enum { 
-        Idle,
+        FrameIdle,
         FrameSend,
         FrameRead0,
-        FraneRead1
+        FrameRead1
     } frame_state;
 
     state st, nst;
     frame_state frame_st, frame_nst;
 
     assign idle = st == Idle;
-    wire read_write_bit = frame_st == FrameRead1 ? 1 : 0;
 
     always @(posedge clk, posedge rst)
         if(rst)
@@ -105,12 +104,12 @@ module i2c_base(
             Idle: nst = (send || read) ? SendStart : Idle;   
             SendStart: nst = SendSlaveAddress;
             SendSlaveAddress: nst = stream_finish ? ReceiveSlaveAddressAck : SendSlaveAddress;
-            ReceiveSlaveAddressAck: nst = frame_st == FrameRead1 ? ReceiveData : SendDataAddress;
+            ReceiveSlaveAddressAck: nst = bus_error ? SendStop : (frame_st == FrameRead1 ? ReceiveData : SendDataAddress);
             SendDataAddress: nst = stream_finish ? ReceiveDataAddressAck : SendDataAddress;
-            ReceiveDataAddressAck: nst = read_write_bit ? SendData : SendStart;
+            ReceiveDataAddressAck: nst = bus_error ? SendStop : (frame_st == FrameSend ? SendData : SendStart);
             SendData: nst = stream_finish ? ReceiveDataAck : SendData; 
             ReceiveDataAck: nst = SendStop;
-            ReceiveData: nst = SendDataNack;
+            ReceiveData: nst = stream_finish ? SendDataNack : ReceiveData;
             SendDataNack: nst = SendStop;
             SendStop: nst = Idle;
             default: nst = Idle;
@@ -118,20 +117,20 @@ module i2c_base(
 
     always @(posedge clk, posedge rst)
         if(rst)
-            frame_st <= Idle;
-        else (bus_idle)
+            frame_st <= FrameIdle;
+        else if(bus_idle)
             frame_st <= frame_nst;
 
     always @*
-        if nst == Idle
-            frame_nst = Idle;
+        if (nst == Idle)
+            frame_nst = FrameIdle;
         else
             case(frame_st)
-                Idle: frame_nst = read ? FrameRead0 : (send ? FrameSend : Idle);
+                FrameIdle: frame_nst = read ? FrameRead0 : (send ? FrameSend : FrameIdle);
                 FrameSend: frame_nst = FrameSend;
                 FrameRead0: frame_nst = st == ReceiveDataAddressAck ? FrameRead1 : FrameRead0;
                 FrameRead1: frame_nst = FrameRead1;
-                default: frame_nst = Idle;
+                default: frame_nst = FrameIdle;
             endcase
 
 
@@ -140,7 +139,7 @@ module i2c_base(
             stream_data_out <= 8'hFF;
         else 
             case(st)
-                SendStart: stream_data_out <= {dev_adr[7:1], read_write_bit};
+                SendStart: stream_data_out <= {dev_adr[7:1], frame_st == FrameRead1 ? 1 : 0};
                 ReceiveSlaveAddressAck: stream_data_out <= dev_reg;
                 ReceiveDataAddressAck: stream_data_out <= dev_data_write;
                 default: stream_data_out <= 8'hFF;
@@ -184,11 +183,11 @@ module i2c_base(
             case(st)
                 Idle: bus_next_cmd <= i2c_bus_state::IDLE;
                 SendStart: bus_next_cmd <= i2c_bus_state::SEND_START;
-                SendSlaveAddress: bus_next_cmd <= stream_out ? i2c_bus_state::SEND_ONE : i2c_bus_state::SEND_ZERO;
+                SendSlaveAddress: bus_next_cmd <= stream_bit_out ? i2c_bus_state::SEND_ONE : i2c_bus_state::SEND_ZERO;
                 ReceiveSlaveAddressAck: bus_next_cmd <= i2c_bus_state::RECEIVE_ACK;
-                SendDataAddress: bus_next_cmd <= stream_out ? i2c_bus_state::SEND_ONE : i2c_bus_state::SEND_ZERO;
+                SendDataAddress: bus_next_cmd <= stream_bit_out ? i2c_bus_state::SEND_ONE : i2c_bus_state::SEND_ZERO;
                 ReceiveDataAddressAck: bus_next_cmd <= i2c_bus_state::RECEIVE_ACK;
-                SendData: bus_next_cmd <= stream_out ? i2c_bus_state::SEND_ONE : i2c_bus_state::SEND_ZERO;
+                SendData: bus_next_cmd <= stream_bit_out ? i2c_bus_state::SEND_ONE : i2c_bus_state::SEND_ZERO;
                 ReceiveDataAck: bus_next_cmd <= i2c_bus_state::RECEIVE_ACK;
                 ReceiveData: bus_next_cmd <= i2c_bus_state::READ_DATA;
                 SendDataNack: bus_next_cmd <= i2c_bus_state::SEND_NACK;

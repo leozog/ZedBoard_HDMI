@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri May 24 08:31:09 2024
-# Process ID: 4908
-# Current directory: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/prj_hdmi2/prj_hdmi2.runs/synth_1
+# Start of session at: Wed May 29 12:41:27 2024
+# Process ID: 12048
+# Current directory: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
-# Log file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/prj_hdmi2/prj_hdmi2.runs/synth_1/top.vds
-# Journal file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/prj_hdmi2/prj_hdmi2.runs/synth_1\vivado.jou
+# Log file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/synth_1/top.vds
+# Journal file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/synth_1\vivado.jou
 # Running On: DESKTOP-JBTK6O5, OS: Windows, CPU Frequency: 2895 MHz, CPU Physical cores: 16, Host memory: 16505 MB
 #-----------------------------------------------------------
 source top.tcl -notrace

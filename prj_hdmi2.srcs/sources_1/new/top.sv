@@ -26,7 +26,7 @@ module top(
     inout i2c_scl,
     inout i2c_sda,
     input start,
-    output idle
+    output [7:0] dev_data_read
     );
 
     wire sclk;
@@ -45,13 +45,15 @@ module top(
         .clk(clk),
         .rst(rst),
         .sclk(sclk),
+        .i2c_scl(i2c_scl),
+        .i2c_sda(i2c_sda),
         .dev_adr(dev_adr),
         .dev_reg(dev_reg),
         .dev_data_write(dev_data_write),
-        .start(start),
-        .idle(idle),
-        .i2c_scl(i2c_scl),
-        .i2c_sda(i2c_sda)
+        .dev_data_read(dev_data_read),
+        .send(0),
+        .read(start),
+        .idle()
         );
 
 endmodule

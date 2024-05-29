@@ -113,6 +113,10 @@ module tb(
 
     // i2c_base test
     reg [7:0] dev_adr, dev_reg, dev_data_write;
+    assign dev_adr = 8'h72;
+    assign dev_reg = 8'hBB;
+    assign dev_data_write = 8'hCC;
+    wire [7:0] dev_data_read;
     reg start;
     wire idle;
     wire i2c_scl, i2c_sda;
@@ -120,22 +124,21 @@ module tb(
         .clk(clk),
         .rst(rst),
         .sclk(sclk),
+        .i2c_scl(i2c_scl),
+        .i2c_sda(i2c_sda),
         .dev_adr(dev_adr),
         .dev_reg(dev_reg),
         .dev_data_write(dev_data_write),
-        .start(start),
-        .idle(idle),
-        .i2c_scl(i2c_scl),
-        .i2c_sda(i2c_sda)
+        .dev_data_read(dev_data_read),
+        .send(0),
+        .read(start),
+        .idle(idle)
         );
         
     pullup(i2c_scl);
     pullup(i2c_sda);
 
     initial begin
-        dev_adr = 8'hAA;
-        dev_reg = 8'hBB;
-        dev_data_write = 8'hCC;
         start = 0;
         #10 start = 1;
         wait (i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::RECEIVE_ACK);
