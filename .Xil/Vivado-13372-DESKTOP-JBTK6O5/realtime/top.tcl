@@ -16,7 +16,7 @@ set rt::rc [catch {
     set rt::cmdEcho 0
     rt::set_parameter writeXmsg true
     rt::set_parameter enableParallelHelperSpawn true
-    set ::env(RT_TMP) "C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/.Xil/Vivado-13392-DESKTOP-JBTK6O5/realtime/tmp"
+    set ::env(RT_TMP) "C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/.Xil/Vivado-13372-DESKTOP-JBTK6O5/realtime/tmp"
     if { [ info exists ::env(RT_TMP) ] } {
       file delete -force $::env(RT_TMP)
       file mkdir $::env(RT_TMP)
@@ -40,11 +40,12 @@ set rt::rc [catch {
     rt::set_parameter sortHdlCommandLine true
     set rt::useElabCache false
     if {$rt::useElabCache == false} {
-      rt::read_verilog -sv {
+      rt::read_verilog -sv -include C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new {
       C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/bit_stream.sv
       C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/clk_div.sv
       C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/i2c_bus.sv
       C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/i2c_base.sv
+      C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/i2c_stream.sv
       C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/top.sv
     }
       rt::filesetChecksum
@@ -70,7 +71,7 @@ set rt::rc [catch {
     rt::set_parameter webTalkPath {}
     rt::set_parameter synthDebugLog false
     rt::set_parameter printModuleName false
-    rt::set_parameter enableSplitFlowPath "C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/.Xil/Vivado-13392-DESKTOP-JBTK6O5/"
+    rt::set_parameter enableSplitFlowPath "C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/.Xil/Vivado-13372-DESKTOP-JBTK6O5/"
     set ok_to_delete_rt_tmp true 
     if { [rt::get_parameter parallelDebug] } { 
        set ok_to_delete_rt_tmp false 

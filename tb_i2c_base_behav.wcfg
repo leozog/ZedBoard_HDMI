@@ -3,33 +3,61 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_i2c_base_write_behav.wdb" id="1">
+      <db_ref path="tb_i2c_stream_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="i2c_bus_state" />
-            <top_module name="tb_i2c_base_write" />
+            <top_module name="tb_i2c_stream" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="166.666 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,166.667 ns"></ZoomEndTime>
+      <ZoomStartTime time="498.710 ns"></ZoomStartTime>
+      <ZoomEndTime time="807.418 ns"></ZoomEndTime>
       <Cursor1Time time="1,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="243"></NameColumnWidth>
-      <ValueColumnWidth column_width="89"></ValueColumnWidth>
+      <NameColumnWidth column_width="140"></NameColumnWidth>
+      <ValueColumnWidth column_width="184"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="3" />
-   <wvobject fp_name="/tb_i2c_base_write/i2c_scl" type="logic">
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/tb_i2c_stream/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_i2c_stream/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/st" type="array">
+      <obj_property name="ElementShortName">st[31:0]</obj_property>
+      <obj_property name="ObjectShortName">st[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/acc" type="array">
+      <obj_property name="ElementShortName">acc[7:0]</obj_property>
+      <obj_property name="ObjectShortName">acc[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/rom_ctr" type="array">
+      <obj_property name="ElementShortName">rom_ctr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_ctr[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_i2c_stream/i2c_scl" type="logic">
       <obj_property name="ElementShortName">i2c_scl</obj_property>
       <obj_property name="ObjectShortName">i2c_scl</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_base_write/i2c_sda" type="logic">
+   <wvobject fp_name="/tb_i2c_stream/i2c_sda" type="logic">
       <obj_property name="ElementShortName">i2c_sda</obj_property>
       <obj_property name="ObjectShortName">i2c_sda</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_base_write/i2c_base_inst/i2c_bus_inst/st" type="array">
+   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/dev_reg" type="array">
+      <obj_property name="ElementShortName">dev_reg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dev_reg[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/base_write" type="logic">
+      <obj_property name="ElementShortName">base_write</obj_property>
+      <obj_property name="ObjectShortName">base_write</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/st" type="array">
       <obj_property name="ElementShortName">st[31:0]</obj_property>
       <obj_property name="ObjectShortName">st[31:0]</obj_property>
    </wvobject>

@@ -25,35 +25,18 @@ module top(
     input rst,
     inout i2c_scl,
     inout i2c_sda,
-    input start,
-    output [7:0] dev_data_read
+    input start
     );
 
-    wire sclk;
-    clk_div #(.DIV(8192)) clk_div_inst(
+    i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(64), .DEV_ADR(8'h72), .CLK_DIV(2))
+        i2c_stream_inst
+        (
         .clk(clk),
         .rst(rst),
-        .sclk(sclk)
-        );
-
-    reg [7:0] dev_adr, dev_reg, dev_data_write;
-    assign dev_adr = 8'h72;
-    assign dev_reg = 8'h98;
-    assign dev_data_write = 8'hCC;
-
-    i2c_base i2c_base_inst(
-        .clk(clk),
-        .rst(rst),
-        .sclk(sclk),
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
-        .dev_adr(dev_adr),
-        .dev_reg(dev_reg),
-        .dev_data_write(dev_data_write),
-        .dev_data_read(dev_data_read),
-        .write(0),
-        .read(start),
-        .idle()
+        .start(start),
+        .fin()
         );
 
 endmodule

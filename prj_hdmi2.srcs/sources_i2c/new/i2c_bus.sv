@@ -52,8 +52,10 @@ module i2c_bus(
             phase <= phase + 1'b1;
 
     always @(posedge clk, posedge rst)
-        if (rst)
+        if (rst) begin
+            lst <= i2c_bus_state::IDLE;
             st <= i2c_bus_state::IDLE;
+        end
         else if (sclk && phase == 3) begin
             lst <= st;
             st <= nst;

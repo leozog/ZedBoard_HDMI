@@ -134,64 +134,49 @@ module i2c_base(
             endcase
 
 
-    always @(posedge clk, posedge rst)
-        if (rst)
-            stream_data_out <= 8'hFF;
-        else 
-            case(st)
-                WRITE_START: stream_data_out <= dev_adr & 8'hFE | (frame_st == FRAME_READ_1 ? 8'h01 : 8'h00);
-                READ_SLAVE_ADDRESS_ACK: stream_data_out <= dev_reg;
-                READ_DATA_ADDRESS_ACK: stream_data_out <= dev_data_write;
-                default: stream_data_out <= 8'hFF;
-            endcase
+    always @*
+        case(st)
+            WRITE_START: stream_data_out = dev_adr & 8'hFE | (frame_st == FRAME_READ_1 ? 8'h01 : 8'h00);
+            READ_SLAVE_ADDRESS_ACK: stream_data_out = dev_reg;
+            READ_DATA_ADDRESS_ACK: stream_data_out = dev_data_write;
+            default: stream_data_out = 8'hFF;
+        endcase
     
-    always @(posedge clk, posedge rst)
-        if (rst)
-            stream_start <= 0;
-        else 
-            case(st)
-                WRITE_START: stream_start <= 1;
-                READ_SLAVE_ADDRESS_ACK: stream_start <= 1;
-                READ_DATA_ADDRESS_ACK: stream_start <= 1;
-                default: stream_start <= 0;
-            endcase
+    always @*
+        case(st)
+            WRITE_START: stream_start = 1;
+            READ_SLAVE_ADDRESS_ACK: stream_start = 1;
+            READ_DATA_ADDRESS_ACK: stream_start = 1;
+            default: stream_start = 0;
+        endcase
 
-    always @(posedge clk, posedge rst)
-        if (rst)
-            stream_write <= 0;
-        else 
-            case(st)
-                WRITE_SLAVE_ADDRESS: stream_write <= 1;
-                WRITE_DATA_ADDRESS: stream_write <= 1;
-                WRITE_DATA: stream_write <= 1;
-                default: stream_write <= 0;
-            endcase
+    always @*
+        case(st)
+            WRITE_SLAVE_ADDRESS: stream_write = 1;
+            WRITE_DATA_ADDRESS: stream_write = 1;
+            WRITE_DATA: stream_write = 1;
+            default: stream_write = 0;
+        endcase
 
-    always @(posedge clk, posedge rst)
-        if (rst)
-            stream_read <= 0;
-        else 
-            case(st)
-                READ_DATA: stream_read <= 1;
-                default: stream_read <= 0;
-            endcase
+    always @*
+        case(st)
+            READ_DATA: stream_read = 1;
+            default: stream_read = 0;
+        endcase
 
-    always @(posedge clk, posedge rst)
-        if (rst)
-            bus_next_cmd <= i2c_bus_state::IDLE;
-        else 
-            case(st)
-                IDLE: bus_next_cmd <= i2c_bus_state::IDLE;
-                WRITE_START: bus_next_cmd <= i2c_bus_state::WRITE_START;
-                WRITE_SLAVE_ADDRESS: bus_next_cmd <= stream_bit_out ? i2c_bus_state::WRITE_ONE : i2c_bus_state::WRITE_ZERO;
-                READ_SLAVE_ADDRESS_ACK: bus_next_cmd <= i2c_bus_state::READ_ACK;
-                WRITE_DATA_ADDRESS: bus_next_cmd <= stream_bit_out ? i2c_bus_state::WRITE_ONE : i2c_bus_state::WRITE_ZERO;
-                READ_DATA_ADDRESS_ACK: bus_next_cmd <= i2c_bus_state::READ_ACK;
-                WRITE_DATA: bus_next_cmd <= stream_bit_out ? i2c_bus_state::WRITE_ONE : i2c_bus_state::WRITE_ZERO;
-                READ_DATA_ACK: bus_next_cmd <= i2c_bus_state::READ_ACK;
-                READ_DATA: bus_next_cmd <= i2c_bus_state::READ_DATA;
-                WRITE_DATA_NACK: bus_next_cmd <= i2c_bus_state::WRITE_NACK;
-                WRITE_STOP: bus_next_cmd <= i2c_bus_state::WRITE_STOP;
-                default: bus_next_cmd <= i2c_bus_state::IDLE;
-            endcase
+    always @*
+        case(st)
+            IDLE: bus_next_cmd = i2c_bus_state::IDLE;
+            WRITE_START: bus_next_cmd = i2c_bus_state::WRITE_START;
+            WRITE_SLAVE_ADDRESS: bus_next_cmd = stream_bit_out ? i2c_bus_state::WRITE_ONE : i2c_bus_state::WRITE_ZERO;
+            READ_SLAVE_ADDRESS_ACK: bus_next_cmd = i2c_bus_state::READ_ACK;
+            WRITE_DATA_ADDRESS: bus_next_cmd = stream_bit_out ? i2c_bus_state::WRITE_ONE : i2c_bus_state::WRITE_ZERO;
+            READ_DATA_ADDRESS_ACK: bus_next_cmd = i2c_bus_state::READ_ACK;
+            WRITE_DATA: bus_next_cmd = stream_bit_out ? i2c_bus_state::WRITE_ONE : i2c_bus_state::WRITE_ZERO;
+            READ_DATA_ACK: bus_next_cmd = i2c_bus_state::READ_ACK;
+            READ_DATA: bus_next_cmd = i2c_bus_state::READ_DATA;
+            WRITE_DATA_NACK: bus_next_cmd = i2c_bus_state::WRITE_NACK;
+            WRITE_STOP: bus_next_cmd = i2c_bus_state::WRITE_STOP;
+            default: bus_next_cmd = i2c_bus_state::IDLE;
+        endcase
 endmodule

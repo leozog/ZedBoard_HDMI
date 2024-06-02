@@ -5,7 +5,7 @@
 // 
 // Create Date: 22.05.2024 06:38:15
 // Design Name: 
-// Module Name: tb_i2c_base
+// Module Name: tb_i2c_base_write
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 

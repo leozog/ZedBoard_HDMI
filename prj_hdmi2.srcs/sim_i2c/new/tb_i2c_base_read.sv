@@ -5,7 +5,7 @@
 // 
 // Create Date: 22.05.2024 06:38:15
 // Design Name: 
-// Module Name: tb_i2c_base
+// Module Name: tb_i2c_base_read
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -72,6 +72,7 @@ module tb_i2c_base_read(
         start = 0;
         #10 start = 1;
         #100 start = 0;
+        #200 $stop;
     end
 
     always @(i2c_base_inst.i2c_bus_inst.st)
