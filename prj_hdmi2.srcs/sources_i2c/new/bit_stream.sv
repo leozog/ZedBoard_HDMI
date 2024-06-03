@@ -47,9 +47,9 @@ module bit_stream
         if(sclk)
             if(setup)
                 hold <= data_out;
-            else if(!finish && write)
+            else if(write)
                 hold <= {hold[N-2:0], 1'b0};
-            else if(!finish && read)
+            else if(read)
                 hold <= {hold[N-2:0], bit_in};
             
     always @(posedge clk, posedge rst)

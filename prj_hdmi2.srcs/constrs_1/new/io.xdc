@@ -15,19 +15,19 @@ set_property PACKAGE_PIN T18 [get_ports start]
 # ----------------------------------------------------------------------------
 # User LEDs - Bank 33
 # ----------------------------------------------------------------------------
-set_property PACKAGE_PIN T22 [get_ports {dev_data_read[0]}];  # "LD0"
-set_property PACKAGE_PIN T21 [get_ports {dev_data_read[1]}];  # "LD1"
-set_property PACKAGE_PIN U22 [get_ports {dev_data_read[2]}];  # "LD2"
-set_property PACKAGE_PIN U21 [get_ports {dev_data_read[3]}];  # "LD3"
-set_property PACKAGE_PIN V22 [get_ports {dev_data_read[4]}];  # "LD4"
-set_property PACKAGE_PIN W22 [get_ports {dev_data_read[5]}];  # "LD5"
-set_property PACKAGE_PIN U19 [get_ports {dev_data_read[6]}];  # "LD6"
-set_property PACKAGE_PIN U14 [get_ports {dev_data_read[7]}];  # "LD7"
+set_property PACKAGE_PIN T22 [get_ports {LD[0]}];  # "LD0"
+set_property PACKAGE_PIN T21 [get_ports {LD[1]}];  # "LD1"
+set_property PACKAGE_PIN U22 [get_ports {LD[2]}];  # "LD2"
+set_property PACKAGE_PIN U21 [get_ports {LD[3]}];  # "LD3"
+set_property PACKAGE_PIN V22 [get_ports {LD[4]}];  # "LD4"
+set_property PACKAGE_PIN W22 [get_ports {LD[5]}];  # "LD5"
+set_property PACKAGE_PIN U19 [get_ports {LD[6]}];  # "LD6"
+set_property PACKAGE_PIN U14 [get_ports {LD[7]}];  # "LD7"
 
 # ----------------------------------------------------------------------------
 # HDMI Output - Bank 33
 # ----------------------------------------------------------------------------
-#set_property PACKAGE_PIN W18  [get_ports {HD_CLK}];  # "HD-CLK"
+set_property PACKAGE_PIN W18  [get_ports {HD_CLK}];  # "HD-CLK"
 #set_property PACKAGE_PIN Y13  [get_ports {HD_D0}];  # "HD-D0"
 #set_property PACKAGE_PIN AA13 [get_ports {HD_D1}];  # "HD-D1"
 #set_property PACKAGE_PIN W13  [get_ports {HD_D10}];  # "HD-D10"
@@ -44,14 +44,14 @@ set_property PACKAGE_PIN U14 [get_ports {dev_data_read[7]}];  # "LD7"
 #set_property PACKAGE_PIN AB17 [get_ports {HD_D7}];  # "HD-D7"
 #set_property PACKAGE_PIN AA17 [get_ports {HD_D8}];  # "HD-D8"
 #set_property PACKAGE_PIN Y15  [get_ports {HD_D9}];  # "HD-D9"
-#set_property PACKAGE_PIN U16  [get_ports {HD_DE}];  # "HD-DE"
-#set_property PACKAGE_PIN V17  [get_ports {HD_HSYNC}];  # "HD-HSYNC"
-#set_property PACKAGE_PIN W16  [get_ports {HD_INT}];  # "HD-INT"
-set_property PACKAGE_PIN AA18 [get_ports i2c_scl]
-set_property PACKAGE_PIN Y16 [get_ports i2c_sda]
-#set_property PACKAGE_PIN U15  [get_ports {HD_SPDIF}];  # "HD-SPDIF"
-#set_property PACKAGE_PIN Y18  [get_ports {HD_SPDIFO}];  # "HD-SPDIFO"
-#set_property PACKAGE_PIN W17  [get_ports {HD_VSYNC}];  # "HD-VSYNC"
+set_property PACKAGE_PIN U16  [get_ports {HD_DE}];  # "HD-DE"
+set_property PACKAGE_PIN V17  [get_ports {HD_HSYNC}];  # "HD-HSYNC"
+set_property PACKAGE_PIN W16  [get_ports {HD_INT}];  # "HD-INT"
+set_property PACKAGE_PIN AA18 [get_ports i2c_scl]; # i2c scl
+set_property PACKAGE_PIN Y16 [get_ports i2c_sda]; # i2c sda
+# set_property PACKAGE_PIN U15  [get_ports {HD_SPDIF}];  # "HD-SPDIF"
+# set_property PACKAGE_PIN Y18  [get_ports {HD_SPDIFO}];  # "HD-SPDIFO"
+set_property PACKAGE_PIN W17  [get_ports {HD_VSYNC}];  # "HD-VSYNC"
 
 
 # Note that the bank voltage for IO Bank 33 is fixed to 3.3V on ZedBoard.

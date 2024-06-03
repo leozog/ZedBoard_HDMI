@@ -9,6 +9,10 @@ connect_debug_port u_ila_0/probe4 [get_nets [list idle_OBUF]]
 
 
 
+connect_debug_port u_ila_0/probe0 [get_nets [list {dev_data_read_OBUF[0]} {dev_data_read_OBUF[1]} {dev_data_read_OBUF[2]} {dev_data_read_OBUF[3]} {dev_data_read_OBUF[4]} {dev_data_read_OBUF[5]} {dev_data_read_OBUF[6]} {dev_data_read_OBUF[7]}]]
+connect_debug_port u_ila_0/probe3 [get_nets [list sclk]]
+
+
 create_debug_core u_ila_0 ila
 set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
 set_property ALL_PROBE_SAME_MU_CNT 2 [get_debug_cores u_ila_0]
@@ -22,7 +26,7 @@ set_property port_width 1 [get_debug_ports u_ila_0/clk]
 connect_debug_port u_ila_0/clk [get_nets [list clk_IBUF_BUFG]]
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
 set_property port_width 8 [get_debug_ports u_ila_0/probe0]
-connect_debug_port u_ila_0/probe0 [get_nets [list {dev_data_read_OBUF[0]} {dev_data_read_OBUF[1]} {dev_data_read_OBUF[2]} {dev_data_read_OBUF[3]} {dev_data_read_OBUF[4]} {dev_data_read_OBUF[5]} {dev_data_read_OBUF[6]} {dev_data_read_OBUF[7]}]]
+connect_debug_port u_ila_0/probe0 [get_nets [list {LD_OBUF[0]} {LD_OBUF[1]} {LD_OBUF[2]} {LD_OBUF[3]} {LD_OBUF[4]} {LD_OBUF[5]} {LD_OBUF[6]} {LD_OBUF[7]}]]
 create_debug_port u_ila_0 probe
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
 set_property port_width 1 [get_debug_ports u_ila_0/probe1]
@@ -34,7 +38,7 @@ connect_debug_port u_ila_0/probe2 [get_nets [list i2c_sda_IBUF]]
 create_debug_port u_ila_0 probe
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
 set_property port_width 1 [get_debug_ports u_ila_0/probe3]
-connect_debug_port u_ila_0/probe3 [get_nets [list sclk]]
+connect_debug_port u_ila_0/probe3 [get_nets [list i2c_stream_inst/sclk]]
 create_debug_port u_ila_0 probe
 set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
 set_property port_width 1 [get_debug_ports u_ila_0/probe4]

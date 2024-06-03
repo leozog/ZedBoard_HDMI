@@ -119,9 +119,9 @@ module i2c_bus(
                     default: force_sda <= force_sda;
                 endcase
             
-    always @(posedge clk, posedge rst)
-        if (rst)
-            data_read <= 0;
-        else if (sclk && phase == 3 && st == i2c_bus_state::READ_DATA)
-            data_read <= i2c_sda;
+    always @*
+        if (st == i2c_bus_state::READ_DATA)
+            data_read = i2c_sda;
+        else
+            data_read = 0;
 endmodule

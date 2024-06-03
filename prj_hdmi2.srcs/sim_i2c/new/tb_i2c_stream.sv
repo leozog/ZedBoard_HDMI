@@ -37,11 +37,13 @@ module tb_i2c_stream(
     end
 
     reg start;
-    wire idle;
+    wire interupt;
+    pullup(interupt);
+    wire acc_out;
     wire i2c_scl, i2c_sda;
     pullup(i2c_scl);
     pullup(i2c_sda);
-    i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(16), .DEV_ADR(8'h72), .CLK_DIV(2))
+    i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(256), .DEV_ADR(8'h72), .CLK_DIV(2))
         i2c_stream_inst
         (
         .clk(clk),
@@ -49,7 +51,9 @@ module tb_i2c_stream(
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
         .start(start),
-        .fin(fin)
+        .interupt(interupt),
+        .fin(),
+        .acc_out(acc_out)
         );
 
     initial begin
@@ -58,12 +62,17 @@ module tb_i2c_stream(
         #100 start = 0;
     end
 
+    always @(i2c_stream_inst.st == 18)
+        if (interupt)
+            #1 force interupt = 0;
+        else
+            #1 release interupt;
 
     always @(i2c_stream_inst.i2c_base_inst.i2c_bus_inst.st)
         if (i2c_stream_inst.i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::READ_ACK)
             #1 force i2c_sda = 0;
         else if (i2c_stream_inst.i2c_base_inst.i2c_bus_inst.st == i2c_bus_state::READ_DATA)
-            #1 force i2c_sda = 0;
+            #1 force i2c_sda = 1;
         else
             #1 release i2c_sda;
 

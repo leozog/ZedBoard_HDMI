@@ -125,9 +125,11 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param tcl.collectionResultDisplayLimit 0
   set_param checkpoint.writeSynthRtdsInDcp 1
   set_param chipscope.maxJobs 4
-  set_param synth.incrementalSynthesisCache C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/.Xil/Vivado-3692-DESKTOP-JBTK6O5/incrSyn
+  set_param synth.incrementalSynthesisCache C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/.Xil/Vivado-14220-DESKTOP-JBTK6O5/incrSyn
+  set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 16  }
   reset_param project.defaultXPMLibraries 
   open_checkpoint C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.dcp

@@ -25,10 +25,16 @@ module top(
     input rst,
     inout i2c_scl,
     inout i2c_sda,
-    input start
+    input start,
+    output [7:0] LD,
+    output HD_CLK,
+    output HD_DE,
+    output HD_HSYNC,
+    output HD_VSYNC,
+    input HD_INT
     );
 
-    i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(64), .DEV_ADR(8'h72), .CLK_DIV(2))
+    i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(256))
         i2c_stream_inst
         (
         .clk(clk),
@@ -36,7 +42,15 @@ module top(
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
         .start(start),
-        .fin()
+        .interupt(HD_INT),
+        .fin(),
+        .acc_out(LD)
         );
+
+    assign HD_CLK = 1'b0;
+    assign HD_DE = 1'b0;
+    assign HD_HSYNC = 1'b0;
+    assign HD_VSYNC = 1'b0;
+
 
 endmodule
