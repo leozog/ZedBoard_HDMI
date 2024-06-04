@@ -3,10 +3,10 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon Jun  3 11:49:38 2024
-# Process ID: 14220
+# Start of session at: Mon Jun  3 23:07:34 2024
+# Process ID: 15364
 # Current directory: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2732 C:\Users\leonozog\Desktop\AGH\Semestr_6\6JOS\prj\ZedBoard_HDMI\prj_hdmi2.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14944 C:\Users\leonozog\Desktop\AGH\Semestr_6\6JOS\prj\ZedBoard_HDMI\prj_hdmi2.xpr
 # Log file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/vivado.log
 # Journal file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI\vivado.jou
 # Running On: DESKTOP-JBTK6O5, OS: Windows, CPU Frequency: 2895 MHz, CPU Physical cores: 16, Host memory: 16505 MB
@@ -14,66 +14,9 @@
 start_gui
 open_project C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.xpr
 update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-synth_design -top top -part xc7z020clg484-1 -lint 
-synth_design -top top -part xc7z020clg484-1 -lint 
-synth_design -top top -part xc7z020clg484-1 -lint 
-synth_design -top top -part xc7z020clg484-1 -lint 
-synth_design -top top -part xc7z020clg484-1 -lint 
-synth_design -top top -part xc7z020clg484-1 -lint 
-synth_design -top top -part xc7z020clg484-1 -lint 
 reset_run synth_1
-launch_runs synth_1 -jobs 16
-wait_on_run synth_1
-synth_design -top top -part xc7z020clg484-1 -lint 
-reset_run synth_1
-launch_runs synth_1 -jobs 16
-wait_on_run synth_1
-synth_design -rtl -rtl_skip_mlo -name rtl_1
-open_run synth_1 -name synth_1
-show_objects -name NET_ONLY [get_nets -hierarchical -top_net_of_hierarchical_group "*acc*" ]
-show_objects -name NET_ONLY [get_nets -hierarchical -top_net_of_hierarchical_group "*LD*" ]
-show_objects -name NET_ONLY [get_nets -hierarchical -top_net_of_hierarchical_group "*sclk*" ]
-delete_debug_core [get_debug_cores {u_ila_0 }]
-create_debug_core u_ila_0 ila
-set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
-set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
-set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
-set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
-set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
-set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
-set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
-set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
-startgroup 
-set_property C_EN_STRG_QUAL true [get_debug_cores u_ila_0 ]
-set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0 ]
-set_property ALL_PROBE_SAME_MU_CNT 2 [get_debug_cores u_ila_0 ]
-endgroup
-connect_debug_port u_ila_0/clk [get_nets [list clk_IBUF_BUFG ]]
-set_property port_width 8 [get_debug_ports u_ila_0/probe0]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
-connect_debug_port u_ila_0/probe0 [get_nets [list {LD_OBUF[0]} {LD_OBUF[1]} {LD_OBUF[2]} {LD_OBUF[3]} {LD_OBUF[4]} {LD_OBUF[5]} {LD_OBUF[6]} {LD_OBUF[7]} ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe1]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
-connect_debug_port u_ila_0/probe1 [get_nets [list i2c_scl_IBUF ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe2]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
-connect_debug_port u_ila_0/probe2 [get_nets [list i2c_sda_IBUF ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe3]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
-connect_debug_port u_ila_0/probe3 [get_nets [list start_IBUF ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe4]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
-connect_debug_port u_ila_0/probe4 [get_nets [list i2c_stream_inst/sclk ]]
-save_constraints
 launch_runs impl_1 -to_step write_bitstream -jobs 16
 wait_on_run impl_1
-close_design
 open_hw_manager
 connect_hw_server -allow_non_jtag
 open_hw_target
@@ -88,11 +31,7 @@ set_property PROGRAM.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedB
 program_hw_devices [get_hw_devices xc7z020_1]
 refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
 display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-set_property CAPTURE_COMPARE_VALUE eq1'bB [get_hw_probes i2c_stream_inst/sclk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
 run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}] -trigger_now
-wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
 run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
@@ -100,164 +39,20 @@ wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL
 display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
 save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
 close_hw_manager
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_i2c_stream.tcl
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
-close_sim
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_i2c_stream.tcl
-relaunch_sim
-relaunch_sim
-close_sim
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_i2c_stream.tcl
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-run 100 ns
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
-close_sim
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_i2c_stream.tcl
-relaunch_sim
-relaunch_sim
-relaunch_sim
-close_sim
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_i2c_stream.tcl
-run 100 ns
-run 100 ns
-run 100 ns
-run 100 ns
-close_sim
-synth_design -top top -part xc7z020clg484-1 -lint 
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+reset_run impl_1 -prev_step 
 synth_design -top top -part xc7z020clg484-1 -lint 
 reset_run synth_1
 launch_runs synth_1 -jobs 16
 wait_on_run synth_1
-open_run synth_1 -name synth_1
-delete_debug_core [get_debug_cores {u_ila_0 }]
-create_debug_core u_ila_0 ila
-set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
-set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
-set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
-set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
-set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
-set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
-set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
-set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
-startgroup 
-set_property C_EN_STRG_QUAL true [get_debug_cores u_ila_0 ]
-set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0 ]
-set_property ALL_PROBE_SAME_MU_CNT 2 [get_debug_cores u_ila_0 ]
-endgroup
-connect_debug_port u_ila_0/clk [get_nets [list clk_IBUF_BUFG ]]
-set_property port_width 8 [get_debug_ports u_ila_0/probe0]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
-connect_debug_port u_ila_0/probe0 [get_nets [list {LD_OBUF[0]} {LD_OBUF[1]} {LD_OBUF[2]} {LD_OBUF[3]} {LD_OBUF[4]} {LD_OBUF[5]} {LD_OBUF[6]} {LD_OBUF[7]} ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe1]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
-connect_debug_port u_ila_0/probe1 [get_nets [list i2c_scl_IBUF ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe2]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
-connect_debug_port u_ila_0/probe2 [get_nets [list i2c_sda_IBUF ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe3]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
-connect_debug_port u_ila_0/probe3 [get_nets [list i2c_stream_inst/sclk ]]
-create_debug_port u_ila_0 probe
-set_property port_width 1 [get_debug_ports u_ila_0/probe4]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
-connect_debug_port u_ila_0/probe4 [get_nets [list start_IBUF ]]
-save_constraints
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
 launch_runs impl_1 -to_step write_bitstream -jobs 16
 wait_on_run impl_1
+open_run impl_1
 close_design
-open_hw_manager
-connect_hw_server -allow_non_jtag
-open_hw_target
-set_property PROGRAM.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.bit} [get_hw_devices xc7z020_1]
-set_property PROBES.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.ltx} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.ltx} [get_hw_devices xc7z020_1]
-current_hw_device [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}] -trigger_now
-wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-set_property TRIGGER_COMPARE_VALUE eq1'bB [get_hw_probes start_IBUF -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-close_hw_manager
-open_run synth_1 -name synth_1
 open_hw_manager
 connect_hw_server -allow_non_jtag
 open_hw_target
@@ -272,18 +67,12 @@ set_property FULL_PROBES.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/
 set_property PROGRAM.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.bit} [get_hw_devices xc7z020_1]
 program_hw_devices [get_hw_devices xc7z020_1]
 refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-set_property CONTROL.TRIGGER_POSITION 5 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-set_property CAPTURE_COMPARE_VALUE eq1'bB [get_hw_probes i2c_scl_IBUF -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-set_property CAPTURE_COMPARE_VALUE eq1'bX [get_hw_probes i2c_stream_inst/sclk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+set_property PROBES.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
 run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
@@ -293,12 +82,21 @@ display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices
 run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-set_property CAPTURE_COMPARE_VALUE eq1'bX [get_hw_probes i2c_scl_IBUF -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-set_property CAPTURE_COMPARE_VALUE eq1'bB [get_hw_probes i2c_stream_inst/sclk -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
 run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
 display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-add_wave -into {hw_ila_data_1.wcfg} -radix hex { {i2c_stream_inst/sclk} {LD_OBUF} {start_IBUF} }
-save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
-close_hw_manager
-close_design
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
