@@ -3,96 +3,66 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_i2c_stream_behav.wdb" id="1">
+      <db_ref path="tb_hdmi_ctrl_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="i2c_bus_state" />
-            <top_module name="tb_i2c_stream" />
+            <top_module name="tb_hdmi_ctrl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="515.719 ns"></ZoomStartTime>
-      <ZoomEndTime time="951.720 ns"></ZoomEndTime>
-      <Cursor1Time time="674.719 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="2,066.000001 us"></ZoomEndTime>
+      <Cursor1Time time="31,600.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="140"></NameColumnWidth>
-      <ValueColumnWidth column_width="176"></ValueColumnWidth>
+      <ValueColumnWidth column_width="164"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
-   <wvobject fp_name="/tb_i2c_stream/clk" type="logic">
+   <WVObjectSize size="11" />
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/start" type="logic">
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/start" type="logic">
       <obj_property name="ElementShortName">start</obj_property>
       <obj_property name="ObjectShortName">start</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/st" type="array">
-      <obj_property name="ElementShortName">st[31:0]</obj_property>
-      <obj_property name="ObjectShortName">st[31:0]</obj_property>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/i2c_stream_fin" type="logic">
+      <obj_property name="ElementShortName">i2c_stream_fin</obj_property>
+      <obj_property name="ObjectShortName">i2c_stream_fin</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/rom_cmd" type="array">
-      <obj_property name="ElementShortName">rom_cmd[7:0]</obj_property>
-      <obj_property name="ObjectShortName">rom_cmd[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/acc" type="array">
-      <obj_property name="ElementShortName">acc[7:0]</obj_property>
-      <obj_property name="ObjectShortName">acc[7:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/rom_ctr" type="array">
-      <obj_property name="ElementShortName">rom_ctr[8:0]</obj_property>
-      <obj_property name="ObjectShortName">rom_ctr[8:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_scl" type="logic">
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/i2c_scl" type="logic">
       <obj_property name="ElementShortName">i2c_scl</obj_property>
       <obj_property name="ObjectShortName">i2c_scl</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_sda" type="logic">
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/i2c_sda" type="logic">
       <obj_property name="ElementShortName">i2c_sda</obj_property>
       <obj_property name="ObjectShortName">i2c_sda</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/interupt" type="logic">
-      <obj_property name="ElementShortName">interupt</obj_property>
-      <obj_property name="ObjectShortName">interupt</obj_property>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/HD_CLK" type="logic">
+      <obj_property name="ElementShortName">HD_CLK</obj_property>
+      <obj_property name="ObjectShortName">HD_CLK</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/bit_stream_inst/hold" type="array">
-      <obj_property name="ElementShortName">hold[7:0]</obj_property>
-      <obj_property name="ObjectShortName">hold[7:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/HD_D" type="array">
+      <obj_property name="ElementShortName">HD_D[15:0]</obj_property>
+      <obj_property name="ObjectShortName">HD_D[15:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/bit_stream_inst/read" type="logic">
-      <obj_property name="ElementShortName">read</obj_property>
-      <obj_property name="ObjectShortName">read</obj_property>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/HD_DE" type="logic">
+      <obj_property name="ElementShortName">HD_DE</obj_property>
+      <obj_property name="ObjectShortName">HD_DE</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/bit_stream_inst/bit_in" type="logic">
-      <obj_property name="ElementShortName">bit_in</obj_property>
-      <obj_property name="ObjectShortName">bit_in</obj_property>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/HD_HSYNC" type="logic">
+      <obj_property name="ElementShortName">HD_HSYNC</obj_property>
+      <obj_property name="ObjectShortName">HD_HSYNC</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/bit_stream_inst/sclk" type="logic">
-      <obj_property name="ElementShortName">sclk</obj_property>
-      <obj_property name="ObjectShortName">sclk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/sclk" type="logic">
-      <obj_property name="ElementShortName">sclk</obj_property>
-      <obj_property name="ObjectShortName">sclk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/bit_stream_inst/ctr" type="array">
-      <obj_property name="ElementShortName">ctr[3:0]</obj_property>
-      <obj_property name="ObjectShortName">ctr[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/st" type="array">
-      <obj_property name="ElementShortName">st[31:0]</obj_property>
-      <obj_property name="ObjectShortName">st[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/bit_stream_inst/write" type="logic">
-      <obj_property name="ElementShortName">write</obj_property>
-      <obj_property name="ObjectShortName">write</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_i2c_stream/i2c_stream_inst/i2c_base_inst/bit_stream_inst/read" type="logic">
-      <obj_property name="ElementShortName">read</obj_property>
-      <obj_property name="ObjectShortName">read</obj_property>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/HD_VSYNC" type="logic">
+      <obj_property name="ElementShortName">HD_VSYNC</obj_property>
+      <obj_property name="ObjectShortName">HD_VSYNC</obj_property>
    </wvobject>
 </wave_config>

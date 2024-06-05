@@ -1,11 +1,13 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib  \
 "../../../../prj_hdmi2.srcs/sources_i2c/new/bit_stream.sv" \
-"../../../../prj_hdmi2.srcs/sources_i2c/new/clk_div.sv" \
+"../../../../prj_hdmi2.srcs/sources_util/new/clk_div.sv" \
+"../../../../prj_hdmi2.srcs/sources_hdmi/new/hdmi_ctrl.sv" \
+"../../../../prj_hdmi2.srcs/sources_hdmi/new/hdmi_stream.sv" \
 "../../../../prj_hdmi2.srcs/sources_i2c/new/i2c_bus.sv" \
 "../../../../prj_hdmi2.srcs/sources_i2c/new/i2c_base.sv" \
 "../../../../prj_hdmi2.srcs/sources_i2c/new/i2c_stream.sv" \
-"../../../../prj_hdmi2.srcs/sim_i2c/new/tb_i2c_stream.sv" \
+"../../../../prj_hdmi2.srcs/sim_hdmi/new/tb_hdmi_ctrl.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

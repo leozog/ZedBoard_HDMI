@@ -21,7 +21,7 @@
 
 
 module clk_div
-    #(parameter DIV = 2)
+    #(parameter DIV)
     (
     input clk,
     input rst,
@@ -30,7 +30,7 @@ module clk_div
 
     reg [$clog2(DIV)-1:0] cnt;
 
-    assign sclk = cnt == DIV-1;
+    assign sclk = DIV == 1 ? clk : cnt == DIV-1;
 
     always @(posedge clk, posedge rst)
         if (rst)

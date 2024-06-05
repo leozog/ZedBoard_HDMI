@@ -28,6 +28,7 @@ module top(
     input start,
     output [7:0] LD,
     output HD_CLK,
+    output [15:0] HD_D,
     output HD_DE,
     output HD_HSYNC,
     output HD_VSYNC,
