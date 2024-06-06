@@ -39,7 +39,6 @@ module tb_i2c_stream(
     reg start;
     wire interupt;
     pullup(interupt);
-    wire acc_out;
     wire i2c_scl, i2c_sda;
     pullup(i2c_scl);
     pullup(i2c_sda);
@@ -52,8 +51,7 @@ module tb_i2c_stream(
         .i2c_sda(i2c_sda),
         .start(start),
         .interupt(interupt),
-        .fin(),
-        .acc_out(acc_out)
+        .fin()
         );
 
     initial begin

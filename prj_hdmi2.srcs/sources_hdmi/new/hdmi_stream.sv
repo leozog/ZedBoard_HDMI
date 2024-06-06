@@ -66,13 +66,19 @@ module hdmi_stream
     reg [1:0] phase;
 
     always @(posedge clk, posedge rst)
-        if (rst || !run)
+        if (rst)
+            phase <= 0;
+        else if (sclk && !run)
             phase <= 0;
         else if (sclk)
             phase <= phase + 1;
 
     always @(posedge clk, posedge rst)
-        if (rst || !run) begin
+        if (rst) begin
+            h_cnt <= 0;
+            v_cnt <= 0;
+        end
+        else if (sclk && !run) begin
             h_cnt <= 0;
             v_cnt <= 0;
         end
@@ -90,7 +96,9 @@ module hdmi_stream
                 h_cnt <= h_cnt + 1;
     
     always @(posedge clk, posedge rst)
-        if (rst || !run)
+        if (rst)
+            HD_CLK <= 1'b0;
+        else if (sclk && !run)
             HD_CLK <= 1'b0;
         else if (sclk)
             HD_CLK <= ~phase[0];

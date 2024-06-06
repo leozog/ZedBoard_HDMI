@@ -48,8 +48,7 @@ module hdmi_ctrl
         .i2c_sda(i2c_sda),
         .start(start),
         .interupt(HD_INT),
-        .fin(i2c_stream_fin),
-        .acc_out()
+        .fin(i2c_stream_fin)
         );
         
     hdmi_stream #(

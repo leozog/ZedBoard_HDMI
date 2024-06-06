@@ -1,5 +1,4 @@
 set_property SRC_FILE_INFO {cfile:C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/constrs_1/new/io.xdc rfile:../../../prj_hdmi2.srcs/constrs_1/new/io.xdc id:1} [current_design]
-set_property SRC_FILE_INFO {cfile:C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/constrs_1/new/debug.xdc rfile:../../../prj_hdmi2.srcs/constrs_1/new/debug.xdc id:2} [current_design]
 set_property src_info {type:XDC file:1 line:4 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN Y9 [get_ports clk]
 set_property src_info {type:XDC file:1 line:12 export:INPUT save:INPUT read:READ} [current_design]
@@ -24,6 +23,38 @@ set_property src_info {type:XDC file:1 line:25 export:INPUT save:INPUT read:READ
 set_property PACKAGE_PIN U14 [get_ports {LD[7]}];  # "LD7"
 set_property src_info {type:XDC file:1 line:30 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN W18  [get_ports {HD_CLK}];  # "HD-CLK"
+set_property src_info {type:XDC file:1 line:31 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y13  [get_ports {HD_D[0]}];  # "HD-D0"
+set_property src_info {type:XDC file:1 line:32 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AA13 [get_ports {HD_D[1]}];  # "HD-D1"
+set_property src_info {type:XDC file:1 line:33 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN W13  [get_ports {HD_D[10]}];  # "HD-D10"
+set_property src_info {type:XDC file:1 line:34 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN W15  [get_ports {HD_D[11]}];  # "HD-D11"
+set_property src_info {type:XDC file:1 line:35 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V15  [get_ports {HD_D[12]}];  # "HD-D12"
+set_property src_info {type:XDC file:1 line:36 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN U17  [get_ports {HD_D[13]}];  # "HD-D13"
+set_property src_info {type:XDC file:1 line:37 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V14  [get_ports {HD_D[14]}];  # "HD-D14"
+set_property src_info {type:XDC file:1 line:38 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V13  [get_ports {HD_D[15]}];  # "HD-D15"
+set_property src_info {type:XDC file:1 line:39 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AA14 [get_ports {HD_D[2]}];  # "HD-D2"
+set_property src_info {type:XDC file:1 line:40 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y14  [get_ports {HD_D[3]}];  # "HD-D3"
+set_property src_info {type:XDC file:1 line:41 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AB15 [get_ports {HD_D[4]}];  # "HD-D4"
+set_property src_info {type:XDC file:1 line:42 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AB16 [get_ports {HD_D[5]}];  # "HD-D5"
+set_property src_info {type:XDC file:1 line:43 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AA16 [get_ports {HD_D[6]}];  # "HD-D6"
+set_property src_info {type:XDC file:1 line:44 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AB17 [get_ports {HD_D[7]}];  # "HD-D7"
+set_property src_info {type:XDC file:1 line:45 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN AA17 [get_ports {HD_D[8]}];  # "HD-D8"
+set_property src_info {type:XDC file:1 line:46 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y15  [get_ports {HD_D[9]}];  # "HD-D9"
 set_property src_info {type:XDC file:1 line:47 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN U16  [get_ports {HD_DE}];  # "HD-DE"
 set_property src_info {type:XDC file:1 line:48 export:INPUT save:INPUT read:READ} [current_design]
@@ -42,79 +73,3 @@ set_property src_info {type:XDC file:1 line:63 export:INPUT save:INPUT read:READ
 set_property IOSTANDARD LVCMOS18 [get_ports -of_objects [get_iobanks 34]]
 set_property src_info {type:XDC file:1 line:71 export:INPUT save:INPUT read:READ} [current_design]
 set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 13]]
-set_property src_info {type:XDC file:2 line:3 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe4 [get_nets [list sclk]]
-set_property src_info {type:XDC file:2 line:6 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe4 [get_nets [list idle_OBUF]]
-set_property src_info {type:XDC file:2 line:12 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe0 [get_nets [list {dev_data_read_OBUF[0]} {dev_data_read_OBUF[1]} {dev_data_read_OBUF[2]} {dev_data_read_OBUF[3]} {dev_data_read_OBUF[4]} {dev_data_read_OBUF[5]} {dev_data_read_OBUF[6]} {dev_data_read_OBUF[7]}]]
-set_property src_info {type:XDC file:2 line:13 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe3 [get_nets [list sclk]]
-set_property src_info {type:XDC file:2 line:16 export:INPUT save:INPUT read:READ} [current_design]
-create_debug_core u_ila_0 ila
-set_property src_info {type:XDC file:2 line:17 export:INPUT save:INPUT read:READ} [current_design]
-set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:18 export:INPUT save:INPUT read:READ} [current_design]
-set_property ALL_PROBE_SAME_MU_CNT 2 [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:19 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:20 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:21 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_EN_STRG_QUAL true [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:22 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:23 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:24 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
-set_property src_info {type:XDC file:2 line:25 export:INPUT save:INPUT read:READ} [current_design]
-set_property port_width 1 [get_debug_ports u_ila_0/clk]
-set_property src_info {type:XDC file:2 line:26 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/clk [get_nets [list clk_IBUF_BUFG]]
-set_property src_info {type:XDC file:2 line:27 export:INPUT save:INPUT read:READ} [current_design]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
-set_property src_info {type:XDC file:2 line:28 export:INPUT save:INPUT read:READ} [current_design]
-set_property port_width 8 [get_debug_ports u_ila_0/probe0]
-set_property src_info {type:XDC file:2 line:29 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe0 [get_nets [list {LD_OBUF[0]} {LD_OBUF[1]} {LD_OBUF[2]} {LD_OBUF[3]} {LD_OBUF[4]} {LD_OBUF[5]} {LD_OBUF[6]} {LD_OBUF[7]}]]
-set_property src_info {type:XDC file:2 line:30 export:INPUT save:INPUT read:READ} [current_design]
-create_debug_port u_ila_0 probe
-set_property src_info {type:XDC file:2 line:31 export:INPUT save:INPUT read:READ} [current_design]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
-set_property src_info {type:XDC file:2 line:32 export:INPUT save:INPUT read:READ} [current_design]
-set_property port_width 1 [get_debug_ports u_ila_0/probe1]
-set_property src_info {type:XDC file:2 line:33 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe1 [get_nets [list i2c_scl_IBUF]]
-set_property src_info {type:XDC file:2 line:34 export:INPUT save:INPUT read:READ} [current_design]
-create_debug_port u_ila_0 probe
-set_property src_info {type:XDC file:2 line:35 export:INPUT save:INPUT read:READ} [current_design]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
-set_property src_info {type:XDC file:2 line:36 export:INPUT save:INPUT read:READ} [current_design]
-set_property port_width 1 [get_debug_ports u_ila_0/probe2]
-set_property src_info {type:XDC file:2 line:37 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe2 [get_nets [list i2c_sda_IBUF]]
-set_property src_info {type:XDC file:2 line:38 export:INPUT save:INPUT read:READ} [current_design]
-create_debug_port u_ila_0 probe
-set_property src_info {type:XDC file:2 line:39 export:INPUT save:INPUT read:READ} [current_design]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
-set_property src_info {type:XDC file:2 line:40 export:INPUT save:INPUT read:READ} [current_design]
-set_property port_width 1 [get_debug_ports u_ila_0/probe3]
-set_property src_info {type:XDC file:2 line:41 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe3 [get_nets [list i2c_stream_inst/sclk]]
-set_property src_info {type:XDC file:2 line:42 export:INPUT save:INPUT read:READ} [current_design]
-create_debug_port u_ila_0 probe
-set_property src_info {type:XDC file:2 line:43 export:INPUT save:INPUT read:READ} [current_design]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
-set_property src_info {type:XDC file:2 line:44 export:INPUT save:INPUT read:READ} [current_design]
-set_property port_width 1 [get_debug_ports u_ila_0/probe4]
-set_property src_info {type:XDC file:2 line:45 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port u_ila_0/probe4 [get_nets [list start_IBUF]]
-set_property src_info {type:XDC file:2 line:46 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
-set_property src_info {type:XDC file:2 line:47 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
-set_property src_info {type:XDC file:2 line:48 export:INPUT save:INPUT read:READ} [current_design]
-set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
-set_property src_info {type:XDC file:2 line:49 export:INPUT save:INPUT read:READ} [current_design]
-connect_debug_port dbg_hub/clk [get_nets clk_IBUF_BUFG]

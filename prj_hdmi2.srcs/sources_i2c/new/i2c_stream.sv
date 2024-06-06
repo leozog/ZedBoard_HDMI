@@ -29,8 +29,7 @@ module i2c_stream
     inout i2c_sda,
     input start,
     input interupt,
-    output fin,
-    output [7:0] acc_out
+    output fin
     );
     
     wire sclk;
@@ -66,7 +65,6 @@ module i2c_stream
     reg rom_nxt;
     wire [7:0] rom_cmd = rom[rom_ctr];
     reg [7:0] acc;
-    assign acc_out = acc;
 
     typedef enum {
         STOP, 

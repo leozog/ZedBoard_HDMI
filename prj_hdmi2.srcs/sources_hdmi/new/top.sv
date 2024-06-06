@@ -20,38 +20,36 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top(
+module top
+    (
     input clk,
     input rst,
     inout i2c_scl,
     inout i2c_sda,
-    input start,
-    output [7:0] LD,
     output HD_CLK,
     output [15:0] HD_D,
     output HD_DE,
     output HD_HSYNC,
     output HD_VSYNC,
-    input HD_INT
+    input HD_INT,
+    input start,
+    output [7:0] LD
     );
 
-    i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(256))
-        i2c_stream_inst
-        (
+    hdmi_ctrl hdmi_ctrl_inst (
         .clk(clk),
         .rst(rst),
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
-        .start(start),
-        .interupt(HD_INT),
-        .fin(),
-        .acc_out(LD)
+        .HD_CLK(HD_CLK),
+        .HD_D(HD_D),
+        .HD_DE(HD_DE),
+        .HD_HSYNC(HD_HSYNC),
+        .HD_VSYNC(HD_VSYNC),
+        .HD_INT(HD_INT),
+        .start(start)
         );
 
-    assign HD_CLK = 1'b0;
-    assign HD_DE = 1'b0;
-    assign HD_HSYNC = 1'b0;
-    assign HD_VSYNC = 1'b0;
-
+    assign LD = hdmi_ctrl_inst.i2c_stream_inst.acc;
 
 endmodule
