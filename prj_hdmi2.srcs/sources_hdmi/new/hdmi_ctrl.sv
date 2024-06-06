@@ -38,11 +38,15 @@ module hdmi_ctrl
     input start
     );
 
+    BUFG BUFG_inst_1 (
+        .I(clk),
+        .O(clk1)
+        );
     wire i2c_stream_fin;
     i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(256), .CLK_DIV(I2C_CLK_DIV))
         i2c_stream_inst
         (
-        .clk(clk),
+        .clk(clk1),
         .rst(rst),
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
@@ -50,7 +54,17 @@ module hdmi_ctrl
         .interupt(HD_INT),
         .fin(i2c_stream_fin)
         );
+
+    wire i2c_stream_fin_buf;
+    BUFG BUFG_inst_fin (
+        .I(i2c_stream_fin),
+        .O(i2c_stream_fin_buf)
+        );
         
+    BUFG BUFG_inst_2 (
+        .I(clk),
+        .O(clk2)
+        );
     hdmi_stream #(
         .INPUT_CLK(100_000_000),
         .PIXEL_CLK(48_412_000),
@@ -65,14 +79,14 @@ module hdmi_ctrl
         .V_BACK(20),
         .V_POLARITY(1)
     ) hdmi_stream_inst (
-        .clk(clk),
+        .clk(clk2),
         .rst(rst),
         .HD_CLK(HD_CLK),
         .HD_D(HD_D),
         .HD_DE(HD_DE),
         .HD_HSYNC(HD_HSYNC),
         .HD_VSYNC(HD_VSYNC),
-        .run(i2c_stream_fin)
+        .run(i2c_stream_fin_buf)
     );
      
 endmodule

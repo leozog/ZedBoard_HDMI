@@ -64,21 +64,16 @@ module hdmi_stream
     assign HD_VSYNC = (v_cnt >= V_ACTIVE + V_FRONT && v_cnt < V_ACTIVE + V_FRONT + V_SYNC) ? V_POLARITY : ~V_POLARITY;
 
     reg [1:0] phase;
+    assign HD_CLK = run && !phase[0];
 
     always @(posedge clk, posedge rst)
         if (rst)
-            phase <= 0;
-        else if (sclk && !run)
             phase <= 0;
         else if (sclk)
             phase <= phase + 1;
 
     always @(posedge clk, posedge rst)
         if (rst) begin
-            h_cnt <= 0;
-            v_cnt <= 0;
-        end
-        else if (sclk && !run) begin
             h_cnt <= 0;
             v_cnt <= 0;
         end
@@ -95,14 +90,6 @@ module hdmi_stream
             else
                 h_cnt <= h_cnt + 1;
     
-    always @(posedge clk, posedge rst)
-        if (rst)
-            HD_CLK <= 1'b0;
-        else if (sclk && !run)
-            HD_CLK <= 1'b0;
-        else if (sclk)
-            HD_CLK <= ~phase[0];
-            
     assign D1 = 8'hFF;
     assign D2 = 8'hFF;
         

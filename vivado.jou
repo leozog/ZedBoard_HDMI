@@ -3,10 +3,10 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Jun  5 19:00:37 2024
-# Process ID: 17264
+# Start of session at: Thu Jun  6 04:53:32 2024
+# Process ID: 22740
 # Current directory: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7776 C:\Users\leonozog\Desktop\AGH\Semestr_6\6JOS\prj\ZedBoard_HDMI\prj_hdmi2.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21188 C:\Users\leonozog\Desktop\AGH\Semestr_6\6JOS\prj\ZedBoard_HDMI\prj_hdmi2.xpr
 # Log file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/vivado.log
 # Journal file: C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI\vivado.jou
 # Running On: DESKTOP-JBTK6O5, OS: Windows, CPU Frequency: 2895 MHz, CPU Physical cores: 16, Host memory: 16505 MB
@@ -14,148 +14,63 @@
 start_gui
 open_project C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.xpr
 update_compile_order -fileset sources_1
-close [ open C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/hdmi_ctrl.sv w ]
-add_files C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/hdmi_ctrl.sv
-update_compile_order -fileset sources_1
-export_ip_user_files -of_objects  [get_files C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/clk_div.sv] -no_script -reset -force -quiet
-remove_files  C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/clk_div.sv
-add_files -norecurse C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_util/new/clk_div.sv
-close [ open C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/RGB_to_YCbCr_422.sv w ]
-add_files C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/RGB_to_YCbCr_422.sv
-update_compile_order -fileset sources_1
-set_property SOURCE_SET sources_1 [get_filesets sim_i2c]
-close [ open C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sim_hdmi/new/tb_hdmi_ctrl.sv w ]
-add_files -fileset sim_i2c C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sim_hdmi/new/tb_hdmi_ctrl.sv
-update_compile_order -fileset sim_i2c
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top tb_hdmi_ctrl [get_filesets sim_i2c]
-set_property top_lib xil_defaultlib [get_filesets sim_i2c]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_i2c
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_hdmi_ctrl.tcl
-run all
-run all
-relaunch_sim
-relaunch_sim
-relaunch_sim
-close_sim
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_hdmi_ctrl.tcl
-relaunch_sim
-relaunch_sim
-run 100 ms
-relaunch_sim
-run 20 ms
-relaunch_sim
-run 20 ms
-relaunch_sim
-run 20 ms
-relaunch_sim
-run 20 ms
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-run 20 ms
-relaunch_sim
-relaunch_sim
-run 1 ms
-relaunch_sim
-run 1 ms
-run 20 ms
-relaunch_sim
-relaunch_sim
-run 20 ms
-relaunch_sim
-relaunch_sim
-run 20 ms
-relaunch_sim
-relaunch_sim
-run 20 ms
-relaunch_sim
-run 20 ms
-relaunch_sim
-run 20 ms
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-run 20 ms
-save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
-close_sim
-close [ open C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/hdmi_stream.sv w ]
-add_files C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/hdmi_stream.sv
-update_compile_order -fileset sources_1
-set_property SOURCE_SET sources_1 [get_filesets sim_i2c]
-close [ open C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sim_hdmi/new/tb_hdmi_stream.sv w ]
-add_files -fileset sim_i2c C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sim_hdmi/new/tb_hdmi_stream.sv
-update_compile_order -fileset sim_i2c
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top tb_hdmi_stream [get_filesets sim_i2c]
-set_property top_lib xil_defaultlib [get_filesets sim_i2c]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_i2c
-launch_simulation -simset [get_filesets sim_i2c ]
-launch_simulation -simset [get_filesets sim_i2c ]
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_hdmi_stream.tcl
-relaunch_sim
-run 20 ms
-relaunch_sim
-run 35 ms
-save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
-relaunch_sim
-relaunch_sim
-run 35 ms
-save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
-close_sim
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top tb_hdmi_ctrl [get_filesets sim_i2c]
-set_property top_lib xil_defaultlib [get_filesets sim_i2c]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_i2c
-launch_simulation -simset [get_filesets sim_i2c ]
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_hdmi_ctrl.tcl
-relaunch_sim
-run 35 ms
-relaunch_sim
-relaunch_sim
-run 35 ms
-save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
-close_sim
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top tb_hdmi_stream [get_filesets sim_i2c]
-set_property top_lib xil_defaultlib [get_filesets sim_i2c]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_i2c
-launch_simulation -simset [get_filesets sim_i2c ]
-open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
-source tb_hdmi_stream.tcl
-close_sim
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top tb_hdmi_ctrl [get_filesets sim_i2c]
-set_property top_lib xil_defaultlib [get_filesets sim_i2c]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_i2c
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+open_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+close_design
+open_run impl_1
+close_design
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+open_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+close_design
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+open_run impl_1
+close_design
 launch_simulation -simset [get_filesets sim_i2c ]
 open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
 source tb_hdmi_ctrl.tcl
 run 35 ms
+relaunch_sim
+run 35 ms
+relaunch_sim
+run 35 ms
+save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
+close_sim
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+open_run impl_1
+close_design
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_run impl_1
+close_design
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.bit} [get_hw_devices xc7z020_1]
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.runs/impl_1/top.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+close_hw_manager
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
