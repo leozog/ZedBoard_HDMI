@@ -42,25 +42,43 @@ module tb_hdmi_ctrl(
     initial begin
         start = 0;
         #100 start = 1;
-        #1000 start = 0;
+        #10000 start = 0;
     end
 
     wire i2c_scl, i2c_sda;
     pullup(i2c_scl);
     pullup(i2c_sda);
+
+    wire clk_100MHz;
+    wire clk_150MHz;
+    wire clk_wiz_0_locked;
+    clk_wiz_0 clk_wiz_0_inst
+    (
+        // Clock out ports
+        .clk_100MHz(clk_100MHz),      // output clk_100MHz
+        .clk_150MHz(clk_150MHz),      // output clk_150MHz
+        // Status and control signals
+        .reset(rst),                  // input reset
+        .locked(clk_wiz_0_locked),    // output locked
+        // Clock in ports
+        .clk_in1(clk)                 // input clk_in1
+    );
+
     hdmi_ctrl #(.I2C_CLK_DIV(2))
-        hdmi_ctrl_inst(
-        .clk(clk),
+        hdmi_ctrl_inst 
+        (
+        .clk_100MHz(clk_100MHz),
+        .clk_150MHz(clk_150MHz),
         .rst(rst),
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
-        .HD_CLK(),
-        .HD_D(),
-        .HD_DE(),
-        .HD_HSYNC(),
-        .HD_VSYNC(),
-        .HD_INT(interupt),
-        .start(start)
+        .HD_CLK(HD_CLK),
+        .HD_D(HD_D),
+        .HD_DE(HD_DE),
+        .HD_HSYNC(HD_HSYNC),
+        .HD_VSYNC(HD_VSYNC),
+        .HD_INT(HD_INT),
+        .start(start && clk_wiz_0_locked)
         );
 
     always @(hdmi_ctrl_inst.i2c_stream_inst.st == 18)

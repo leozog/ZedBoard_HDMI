@@ -72,6 +72,8 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -94,6 +96,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_mem C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/i2c_cmd.mem
 read_verilog -library xil_defaultlib -sv {
+  C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/RGB_to_YCbCr_422.sv
   C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/bit_stream.sv
   C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_util/new/clk_div.sv
   C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/hdmi_ctrl.sv
@@ -103,7 +106,7 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/i2c_stream.sv
   C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/top.sv
 }
-read_ip -quiet c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_1/ip/clk_wiz_0_5/clk_wiz_0.xci
+read_ip -quiet C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_1/ip/clk_wiz_0_5/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.gen/sources_1/ip/clk_wiz_0_5/clk_wiz_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.gen/sources_1/ip/clk_wiz_0_5/clk_wiz_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.gen/sources_1/ip/clk_wiz_0_5/clk_wiz_0_ooc.xdc]
@@ -126,8 +129,6 @@ set_property used_in_implementation false [get_files C:/Users/leonozog/Desktop/A
 read_xdc C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/constrs_1/new/debug.xdc
 set_property used_in_implementation false [get_files C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/constrs_1/new/debug.xdc]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/utils_1/imports/synth_1/i2c_base.dcp

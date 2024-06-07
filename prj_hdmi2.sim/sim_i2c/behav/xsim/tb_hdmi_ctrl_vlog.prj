@@ -4,6 +4,7 @@ verilog xil_defaultlib  --include "../../../../prj_hdmi2.ip_user_files/ipstatic"
 "../../../../prj_hdmi2.gen/sources_1/ip/clk_wiz_0_5/clk_wiz_0.v" \
 
 sv xil_defaultlib  --include "../../../../prj_hdmi2.ip_user_files/ipstatic" \
+"../../../../prj_hdmi2.srcs/sources_hdmi/new/RGB_to_YCbCr_422.sv" \
 "../../../../prj_hdmi2.srcs/sources_i2c/new/bit_stream.sv" \
 "../../../../prj_hdmi2.srcs/sources_util/new/clk_div.sv" \
 "../../../../prj_hdmi2.srcs/sources_hdmi/new/hdmi_ctrl.sv" \

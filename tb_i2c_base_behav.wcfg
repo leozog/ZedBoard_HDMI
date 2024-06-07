@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1.514292512 ms"></ZoomStartTime>
-      <ZoomEndTime time="19.515292513 ms"></ZoomEndTime>
-      <Cursor1Time time="16.515125846 ms"></Cursor1Time>
+      <ZoomStartTime time="6,296,609.271 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,296,757.872 ns"></ZoomEndTime>
+      <Cursor1Time time="6,296,733.105 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="140"></NameColumnWidth>
-      <ValueColumnWidth column_width="152"></ValueColumnWidth>
+      <ValueColumnWidth column_width="148"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="19" />
    <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -57,6 +57,14 @@
       <obj_property name="ElementShortName">i2c_sda</obj_property>
       <obj_property name="ObjectShortName">i2c_sda</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/hdmi_stream_inst/run" type="logic">
+      <obj_property name="ElementShortName">run</obj_property>
+      <obj_property name="ObjectShortName">run</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/hdmi_stream_inst/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/HD_CLK" type="logic">
       <obj_property name="ElementShortName">HD_CLK</obj_property>
       <obj_property name="ObjectShortName">HD_CLK</obj_property>
@@ -77,8 +85,16 @@
       <obj_property name="ElementShortName">HD_VSYNC</obj_property>
       <obj_property name="ObjectShortName">HD_VSYNC</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/hdmi_stream_inst/phase" type="array">
-      <obj_property name="ElementShortName">phase[1:0]</obj_property>
-      <obj_property name="ObjectShortName">phase[1:0]</obj_property>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/hdmi_stream_inst/phase" type="logic">
+      <obj_property name="ElementShortName">phase</obj_property>
+      <obj_property name="ObjectShortName">phase</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/hdmi_stream_inst/h_cnt" type="array">
+      <obj_property name="ElementShortName">h_cnt[15:0]</obj_property>
+      <obj_property name="ObjectShortName">h_cnt[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_hdmi_ctrl/hdmi_ctrl_inst/hdmi_stream_inst/v_cnt" type="array">
+      <obj_property name="ElementShortName">v_cnt[15:0]</obj_property>
+      <obj_property name="ObjectShortName">v_cnt[15:0]</obj_property>
    </wvobject>
 </wave_config>
