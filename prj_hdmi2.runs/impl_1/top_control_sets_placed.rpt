@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Jun  6 06:37:24 2024
+| Date         : Fri Jun  7 10:49:34 2024
 | Host         : DESKTOP-JBTK6O5 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    10 |
-|    Minimum number of control sets                        |    10 |
+| Total control sets                                       |     9 |
+|    Minimum number of control sets                        |     9 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    18 |
+| Unused register locations in slices containing registers |    11 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,8 +39,8 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    10 |
-| >= 0 to < 4        |     1 |
+| Total control sets |     9 |
+| >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     4 |
@@ -59,9 +59,9 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               0 |            0 |
-| No           | No                    | Yes                    |              45 |           18 |
+| No           | No                    | Yes                    |              44 |           18 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              16 |            5 |
+| Yes          | No                    | No                     |              16 |            4 |
 | Yes          | No                    | Yes                    |              65 |           20 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -70,19 +70,18 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
-|     Clock Signal     |                                   Enable Signal                                   | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
-|  hdmi_ctrl_inst/clk2 |                                                                                   | rst_IBUF         |                1 |              1 |         1.00 |
-|  hdmi_ctrl_inst/clk1 | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/FSM_onehot_st_reg[4][0] | rst_IBUF         |                1 |              4 |         4.00 |
-|  hdmi_ctrl_inst/clk1 | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/lst0                    | rst_IBUF         |                3 |              8 |         2.67 |
-|  hdmi_ctrl_inst/clk1 | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/FSM_onehot_st_reg[8][0] |                  |                3 |              8 |         2.67 |
-|  hdmi_ctrl_inst/clk1 | hdmi_ctrl_inst/i2c_stream_inst/dev_data_write                                     |                  |                2 |              8 |         4.00 |
-|  hdmi_ctrl_inst/clk1 | hdmi_ctrl_inst/i2c_stream_inst/dev_reg[7]_i_1_n_0                                 | rst_IBUF         |                4 |              8 |         2.00 |
-|  hdmi_ctrl_inst/clk1 | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/E[0]                    | rst_IBUF         |                5 |             13 |         2.60 |
-|  hdmi_ctrl_inst/clk2 | hdmi_ctrl_inst/hdmi_stream_inst/v_cnt[15]_i_1_n_0                                 | rst_IBUF         |                4 |             16 |         4.00 |
-|  hdmi_ctrl_inst/clk2 | hdmi_ctrl_inst/hdmi_stream_inst/h_cnt0                                            | rst_IBUF         |                3 |             16 |         5.33 |
-|  hdmi_ctrl_inst/clk1 |                                                                                   | rst_IBUF         |               17 |             44 |         2.59 |
-+----------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
++------------------------------------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
+|                  Clock Signal                  |                                   Enable Signal                                   | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------------------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/FSM_onehot_st_reg[4][0] | rst_IBUF         |                2 |              4 |         2.00 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/lst0                    | rst_IBUF         |                2 |              8 |         4.00 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/FSM_onehot_st_reg[8][0] |                  |                3 |              8 |         2.67 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/dev_reg[7]_i_1_n_0                                 | rst_IBUF         |                2 |              8 |         4.00 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/dev_data_write                                     |                  |                1 |              8 |         8.00 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/E[0]                    | rst_IBUF         |                5 |             13 |         2.60 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_150MHz | hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_150MHz                                     | rst_IBUF         |                3 |             16 |         5.33 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_150MHz | hdmi_ctrl_inst/hdmi_stream_inst/v_cnt[15]_i_1_n_0                                 | rst_IBUF         |                6 |             16 |         2.67 |
+|  hdmi_ctrl_inst/clk_wiz_0_inst/inst/clk_100MHz |                                                                                   | rst_IBUF         |               18 |             44 |         2.44 |
++------------------------------------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
 
 

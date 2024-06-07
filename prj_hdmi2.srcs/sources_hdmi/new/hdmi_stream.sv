@@ -22,7 +22,7 @@
 
 module hdmi_stream
     #(
-        parameter INPUT_CLK = 100_000_000,
+        parameter INPUT_CLK,
         parameter PIXEL_CLK,
         parameter H_ACTIVE,
         parameter H_FRONT,
@@ -45,26 +45,28 @@ module hdmi_stream
     output HD_VSYNC,
     input run
     );
-    reg [7:0] D1, D2;
-    assign HD_D = {D1, D2};
-
+    
     wire sclk;
-    localparam integer CLK_DIV = INPUT_CLK / PIXEL_CLK / 2;
+    localparam integer CLK_DIV = INPUT_CLK / PIXEL_CLK;
     clk_div #(.DIV(CLK_DIV)) clk_div_inst(
         .clk(clk),
         .rst(rst),
         .sclk(sclk)
         );
+    
+    assign HD_CLK = run && ~sclk;
+    
+    reg [7:0] D1, D2;
+    assign HD_D = {D1, D2};
 
     reg [15:0] h_cnt;
     reg [15:0] v_cnt;
     
     assign HD_DE = run && h_cnt < H_ACTIVE && v_cnt < V_ACTIVE;
-    assign HD_HSYNC = (h_cnt >= H_ACTIVE + H_FRONT && h_cnt < H_ACTIVE + H_FRONT + H_SYNC) ? H_POLARITY : ~H_POLARITY;
-    assign HD_VSYNC = (v_cnt >= V_ACTIVE + V_FRONT && v_cnt < V_ACTIVE + V_FRONT + V_SYNC) ? V_POLARITY : ~V_POLARITY;
+    assign HD_HSYNC = run && (h_cnt >= H_ACTIVE + H_FRONT && h_cnt < H_ACTIVE + H_FRONT + H_SYNC) ? H_POLARITY : ~H_POLARITY;
+    assign HD_VSYNC = run && (v_cnt >= V_ACTIVE + V_FRONT && v_cnt < V_ACTIVE + V_FRONT + V_SYNC) ? V_POLARITY : ~V_POLARITY;
 
-    reg [1:0] phase;
-    assign HD_CLK = run && !phase[0];
+    reg phase;
 
     always @(posedge clk, posedge rst)
         if (rst)
@@ -72,12 +74,13 @@ module hdmi_stream
         else if (sclk)
             phase <= phase + 1;
 
-    always @(posedge clk, posedge rst)
+    buf(clk_buf, clk);
+    always @(posedge clk_buf, posedge rst)
         if (rst) begin
             h_cnt <= 0;
             v_cnt <= 0;
         end
-        else if (sclk && phase[0])
+        else if (sclk)
             if (h_cnt == H_ACTIVE + H_FRONT + H_SYNC + H_BACK - 1)
                 if (v_cnt == V_ACTIVE + V_FRONT + V_SYNC + V_BACK - 1) begin
                     h_cnt <= 0;

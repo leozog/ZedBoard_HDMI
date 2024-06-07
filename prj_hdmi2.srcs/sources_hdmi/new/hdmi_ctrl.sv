@@ -38,19 +38,30 @@ module hdmi_ctrl
     input start
     );
 
-    BUFG BUFG_inst_1 (
-        .I(clk),
-        .O(clk1)
-        );
+    wire clk_100MHz;
+    wire clk_150MHz;
+    wire clk_wiz_0_locked;
+    clk_wiz_0 clk_wiz_0_inst
+    (
+        // Clock out ports
+        .clk_100MHz(clk_100MHz),      // output clk_100MHz
+        .clk_150MHz(clk_150MHz),      // output clk_150MHz
+        // Status and control signals
+        .reset(rst),                  // input reset
+        .locked(clk_wiz_0_locked),    // output locked
+        // Clock in ports
+        .clk_in1(clk)                 // input clk_in1
+    );
+
     wire i2c_stream_fin;
     i2c_stream #(.CMD_FILE("i2c_cmd.mem"), .CMD_SIZE(256), .CLK_DIV(I2C_CLK_DIV))
         i2c_stream_inst
         (
-        .clk(clk1),
+        .clk(clk_100MHz),
         .rst(rst),
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
-        .start(start),
+        .start(start && clk_wiz_0_locked),
         .interupt(HD_INT),
         .fin(i2c_stream_fin)
         );
@@ -61,32 +72,28 @@ module hdmi_ctrl
         .O(i2c_stream_fin_buf)
         );
         
-    BUFG BUFG_inst_2 (
-        .I(clk),
-        .O(clk2)
-        );
     hdmi_stream #(
-        .INPUT_CLK(100_000_000),
-        .PIXEL_CLK(48_412_000),
-        .H_ACTIVE(1280),
-        .H_FRONT(440),
-        .H_SYNC(40),
-        .H_BACK(220),
+        .INPUT_CLK(150_000_000),
+        .PIXEL_CLK(148_500_000),
+        .H_ACTIVE(1920),
+        .H_FRONT(88),
+        .H_SYNC(44),
+        .H_BACK(148),
         .H_POLARITY(1),
-        .V_ACTIVE(720),
-        .V_FRONT(5),
+        .V_ACTIVE(1080),
+        .V_FRONT(4),
         .V_SYNC(5),
-        .V_BACK(20),
+        .V_BACK(36),
         .V_POLARITY(1)
     ) hdmi_stream_inst (
-        .clk(clk2),
+        .clk(clk_150MHz),
         .rst(rst),
         .HD_CLK(HD_CLK),
         .HD_D(HD_D),
         .HD_DE(HD_DE),
         .HD_HSYNC(HD_HSYNC),
         .HD_VSYNC(HD_VSYNC),
-        .run(i2c_stream_fin_buf)
+        .run(i2c_stream_fin_buf && clk_wiz_0_locked)
     );
      
 endmodule

@@ -70,17 +70,20 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.cache/wt [current_project]
 set_property parent.project_path C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.xpr [current_project]
+set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part_repo_paths {C:/Users/leonozog/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
@@ -100,6 +103,11 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_i2c/new/i2c_stream.sv
   C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_hdmi/new/top.sv
 }
+read_ip -quiet c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_1/ip/clk_wiz_0_5/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.gen/sources_1/ip/clk_wiz_0_5/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.gen/sources_1/ip/clk_wiz_0_5/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.gen/sources_1/ip/clk_wiz_0_5/clk_wiz_0_ooc.xdc]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -118,6 +126,8 @@ set_property used_in_implementation false [get_files C:/Users/leonozog/Desktop/A
 read_xdc C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/constrs_1/new/debug.xdc
 set_property used_in_implementation false [get_files C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/constrs_1/new/debug.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/utils_1/imports/synth_1/i2c_base.dcp

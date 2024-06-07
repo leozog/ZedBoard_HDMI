@@ -42,7 +42,7 @@ module tb_hdmi_ctrl(
     initial begin
         start = 0;
         #100 start = 1;
-        #100 start = 0;
+        #1000 start = 0;
     end
 
     wire i2c_scl, i2c_sda;
