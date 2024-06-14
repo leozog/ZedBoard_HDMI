@@ -80,7 +80,7 @@ module top
 
     assign data_we = 1;
 
-    int x, y;
+    int x, y, t;
     always @(posedge clk_100MHz, posedge rst)
         if (rst)
             x <= 0;
@@ -96,13 +96,19 @@ module top
             y <= 0;
         else if (x == 479)
             y <= y + 1;
+
+    always @(posedge clk_100MHz, posedge rst)
+        if (rst)
+            t <= 0;
+        else if (y == 269 && x == 479)
+            t <= t + 1;
     
     always @(posedge clk_100MHz) begin
         data_x <= x;
         data_y <= y;
         data_r <= x<<2;
         data_g <= y<<2;
-        data_b <= 0;
+        data_b <= t[7:0];
     end
 
 endmodule
