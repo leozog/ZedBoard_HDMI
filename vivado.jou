@@ -13,3 +13,9 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.xpr
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_util/new/block_ram.sv] -no_script -reset -force -quiet
+remove_files  C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.srcs/sources_util/new/block_ram.sv
+open_run synth_1 -name synth_1
+reset_run synth_1
+close_design
