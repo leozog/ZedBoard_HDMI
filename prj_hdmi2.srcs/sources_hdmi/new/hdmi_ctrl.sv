@@ -37,12 +37,12 @@ module hdmi_ctrl
     output HD_VSYNC,
     input HD_INT,
     input start,
-    input [15:0] data_x,
-    input [15:0] data_y,
+    input data_we,
+    input int data_pos_x,
+    input int data_pos_y,
     input [7:0] data_r,
     input [7:0] data_g,
-    input [7:0] data_b,
-    input data_save
+    input [7:0] data_b
     );
 
     wire i2c_stream_fin;
@@ -58,29 +58,27 @@ module hdmi_ctrl
         .fin(i2c_stream_fin)
         );
 
-    wire i2c_stream_fin_buf;
-    BUFG BUFG_inst_fin (
-        .O(i2c_stream_fin_buf),
-        .I(i2c_stream_fin)
+        synchronizer synchronizer_inst1 (
+            .clk1(clk_100MHz),
+            .clk2(clk_150MHz),
+            .in(i2c_stream_fin),
+            .out(i2c_stream_fin_sync)
         );
 
-    localparam MEM_WIDTH = 256;
-    localparam MEM_HEIGHT = 256;
-    localparam MEM_SCALE = 4;
     hdmi_stream #(
-        .H_ACTIVE(H_ACTIVE),
+        .H_ACTIVE(1920),
         .H_FRONT(88),
         .H_SYNC(44),
-        .H_BACK(148),
+        .H_BACK(151),
         .H_POLARITY(1),
-        .V_ACTIVE(V_ACTIVE),
+        .V_ACTIVE(1080),
         .V_FRONT(4),
         .V_SYNC(5),
-        .V_BACK(36),
+        .V_BACK(34),
         .V_POLARITY(1),
-        .MEM_WIDTH(MEM_WIDTH),
-        .MEM_HEIGHT(MEM_HEIGHT),
-        .MEM_SCALE(MEM_SCALE)
+        .MEM_WIDTH(480),
+        .MEM_HEIGHT(270),
+        .MEM_SCALE(4)
     ) hdmi_stream_inst (
         .clk(clk_150MHz),
         .rst(rst),
@@ -89,23 +87,14 @@ module hdmi_ctrl
         .HD_DE(HD_DE),
         .HD_HSYNC(HD_HSYNC),
         .HD_VSYNC(HD_VSYNC),
-        .run(i2c_stream_fin_buf)
+        .run(i2c_stream_fin_sync),
+        // data
+        .data_clk(clk_100MHz),
+        .data_we(data_we),
+        .data_pos_x(data_pos_x),
+        .data_pos_y(data_pos_y),
+        .data_r(data_r),
+        .data_g(data_g),
+        .data_b(data_b)
     );
-    
-    localparam data_size = $clog2((MEM_WIDTH >> 2) * MEM_HEIGHT);
-    wire [data_size-1:0] data_pos = (data_x >> 2) + data_y * (H_ACTIVE >> 2);
-    always @(posedge clk_100MHz)
-        if (data_save)
-            if(data_x[0] == 0) begin
-                hdmi_stream_inst.R1[data_pos] <= data_r;
-                hdmi_stream_inst.G1[data_pos] <= data_g;
-                hdmi_stream_inst.B1[data_pos] <= data_b;
-            end 
-            else begin
-                hdmi_stream_inst.R2[data_pos] <= data_r;
-                hdmi_stream_inst.G2[data_pos] <= data_g;
-                hdmi_stream_inst.B2[data_pos] <= data_b;
-            end
-
-
 endmodule

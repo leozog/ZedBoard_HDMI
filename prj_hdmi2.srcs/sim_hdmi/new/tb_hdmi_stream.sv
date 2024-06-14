@@ -60,7 +60,14 @@ module tb_hdmi_stream(
         .HD_DE(),
         .HD_HSYNC(),
         .HD_VSYNC(),
-        .run(run)
+        .run(run),
+        .data_clk(),
+        .data_we(),
+        .data_pos_x(),
+        .data_pos_y(),
+        .data_r(),
+        .data_g(),
+        .data_b()
     );
 
 endmodule

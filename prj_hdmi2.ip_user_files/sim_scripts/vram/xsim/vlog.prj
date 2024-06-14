@@ -1,0 +1,7 @@
+verilog xil_defaultlib  \
+"../../../../prj_hdmi2.gen/sources_1/ip/vram/sim/vram.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

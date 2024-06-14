@@ -1,0 +1,93 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Fri Jun 14 04:13:31 2024
+| Host         : DESKTOP-JBTK6O5 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7z020
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    15 |
+|    Minimum number of control sets                        |    15 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    38 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    15 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     4 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     6 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              74 |           41 |
+| No           | No                    | Yes                    |              99 |           35 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               8 |            4 |
+| Yes          | No                    | Yes                    |             109 |           33 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
+|           Clock Signal          |                                   Enable Signal                                   | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
+| ~clk_wiz_0_inst/inst/clk_150MHz |                                                                                   | rst_IBUF         |                1 |              1 |         1.00 |
+|  clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/FSM_onehot_st_reg[1][0] | rst_IBUF         |                1 |              4 |         4.00 |
+|  clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/E[0]                                 | rst_IBUF         |                4 |              8 |         2.00 |
+|  clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/dev_reg[7]_i_1_n_0                                 | rst_IBUF         |                3 |              8 |         2.67 |
+|  clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/E[0]                    |                  |                4 |              8 |         2.00 |
+|  clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/lst0                    | rst_IBUF         |                3 |              8 |         2.67 |
+|  clk_wiz_0_inst/inst/clk_150MHz | hdmi_ctrl_inst/hdmi_stream_inst/hm_cnt                                            | rst_IBUF         |                3 |             10 |         3.33 |
+|  clk_wiz_0_inst/inst/clk_150MHz | hdmi_ctrl_inst/hdmi_stream_inst/vm_cnt[9]_i_1_n_0                                 | rst_IBUF         |                3 |             10 |         3.33 |
+|  clk_wiz_0_inst/inst/clk_100MHz | hdmi_ctrl_inst/i2c_stream_inst/i2c_base_inst/i2c_bus_inst/phase_reg[1]_0[0]       | rst_IBUF         |                4 |             13 |         3.25 |
+|  clk_wiz_0_inst/inst/clk_150MHz | hdmi_ctrl_inst/hdmi_stream_inst/v_cnt[15]_i_1_n_0                                 | rst_IBUF         |                4 |             16 |         4.00 |
+|  clk_wiz_0_inst/inst/clk_150MHz |                                                                                   | rst_IBUF         |                8 |             22 |         2.75 |
+|  clk_wiz_0_inst/inst/clk_100MHz | y[0]_i_1_n_0                                                                      | rst_IBUF         |                8 |             32 |         4.00 |
+|  clk_wiz_0_inst/inst/clk_100MHz |                                                                                   |                  |               16 |             37 |         2.31 |
+|  clk_wiz_0_inst/inst/clk_150MHz |                                                                                   |                  |               25 |             37 |         1.48 |
+|  clk_wiz_0_inst/inst/clk_100MHz |                                                                                   | rst_IBUF         |               26 |             76 |         2.92 |
++---------------------------------+-----------------------------------------------------------------------------------+------------------+------------------+----------------+--------------+
+
+

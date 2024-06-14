@@ -21,7 +21,7 @@
 
 
 module clk_div
-    #(parameter DIV)
+    #(parameter DIV = 1)
     (
     input clk,
     input rst,

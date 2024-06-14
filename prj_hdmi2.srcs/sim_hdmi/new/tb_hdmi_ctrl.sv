@@ -65,20 +65,26 @@ module tb_hdmi_ctrl(
     );
 
     hdmi_ctrl #(.I2C_CLK_DIV(2))
-        hdmi_ctrl_inst 
+        hdmi_ctrl_inst
         (
         .clk_100MHz(clk_100MHz),
         .clk_150MHz(clk_150MHz),
         .rst(rst),
         .i2c_scl(i2c_scl),
         .i2c_sda(i2c_sda),
-        .HD_CLK(HD_CLK),
-        .HD_D(HD_D),
-        .HD_DE(HD_DE),
-        .HD_HSYNC(HD_HSYNC),
-        .HD_VSYNC(HD_VSYNC),
-        .HD_INT(HD_INT),
-        .start(start && clk_wiz_0_locked)
+        .HD_CLK(),
+        .HD_D(),
+        .HD_DE(),
+        .HD_HSYNC(),
+        .HD_VSYNC(),
+        .HD_INT(),
+        .start(start),
+        .data_we(),
+        .data_pos_x(),
+        .data_pos_y(),
+        .data_r(),
+        .data_g(),
+        .data_b()
         );
 
     always @(hdmi_ctrl_inst.i2c_stream_inst.st == 18)

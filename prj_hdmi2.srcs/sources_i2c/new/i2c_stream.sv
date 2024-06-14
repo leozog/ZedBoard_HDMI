@@ -164,8 +164,6 @@ module i2c_stream
             acc <= acc | rom_cmd;
         else if (st == AND)
             acc <= acc & rom_cmd;
-        else if (st == WRITE_REG)
-            dev_data_write <= acc;
         else if (st == READ_REG_NEXT && base_idle)
             acc <= dev_data_read;
 
@@ -183,4 +181,10 @@ module i2c_stream
             dev_reg <= 8'h00;
         else if (st == WRITE_REG || st == READ_REG)
             dev_reg <= rom_cmd;
+
+    always @(posedge clk, posedge rst)
+        if (rst)
+            dev_data_write <= 0;
+        else if (st == WRITE_REG)
+            dev_data_write <= acc;
 endmodule
