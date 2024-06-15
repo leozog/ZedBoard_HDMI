@@ -13,3 +13,61 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/prj_hdmi2.xpr
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_i2c_stream [get_filesets sim_i2c]
+set_property top_lib xil_defaultlib [get_filesets sim_i2c]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_i2c
+launch_simulation -simset [get_filesets sim_i2c ]
+open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
+source tb_i2c_stream.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run 18 ms
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_i2c_base_write [get_filesets sim_i2c]
+set_property top_lib xil_defaultlib [get_filesets sim_i2c]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_i2c
+launch_simulation -simset [get_filesets sim_i2c ]
+open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
+source tb_i2c_base_write.tcl
+relaunch_sim
+save_wave_config {C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg}
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_i2c_base_read [get_filesets sim_i2c]
+set_property top_lib xil_defaultlib [get_filesets sim_i2c]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_i2c
+launch_simulation -simset [get_filesets sim_i2c ]
+open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
+source tb_i2c_base_read.tcl
+relaunch_sim
+run 18 ms
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_hdmi_ctrl [get_filesets sim_i2c]
+set_property top_lib xil_defaultlib [get_filesets sim_i2c]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_i2c
+launch_simulation -simset [get_filesets sim_i2c ]
+open_wave_config C:/Users/leonozog/Desktop/AGH/Semestr_6/6JOS/prj/ZedBoard_HDMI/tb_i2c_base_behav.wcfg
+source tb_hdmi_ctrl.tcl
+run 18 ms
+relaunch_sim
+run 18 ms
+close_sim
+reset_run synth_1
+reset_simulation -simset sim_i2c -mode behavioral
